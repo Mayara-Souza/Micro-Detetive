@@ -1,0 +1,416 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+
+  min-height: 100vh;
+
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101820;
+  color: white;
+  overflow: hidden;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPO */
+
+.topbar {
+  height: 80px;
+  background: #16212e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: 2px solid #00bcd4;
+}
+
+.topbar h1 {
+  margin: 0;
+  color: #00e5ff;
+}
+
+.status-bar {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+
+/* =========================
+   ÁREA DOS TESTES
+========================= */
+
+#test-buttons {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
+
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+/* =========================
+   BOTÕES DOS TESTES
+========================= */
+
+#test-buttons button {
+
+  background: #1f2937;
+
+  color: white;
+
+  border: 2px solid #374151;
+
+  border-radius: 14px;
+
+  padding: 18px 14px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  min-height: 80px;
+
+  width: 100%;
+}
+
+/* HOVER */
+
+#test-buttons button:hover {
+
+  transform: translateY(-2px);
+
+  background: #2563eb;
+
+  border-color: #60a5fa;
+}
+
+/* CLIQUE */
+
+#test-buttons button:active {
+
+  transform: scale(0.98);
+}
+
+/* TESTE JÁ UTILIZADO */
+
+#test-buttons button.used {
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  #test-buttons {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ÁREA PRINCIPAL */
+
+.main-layout {
+  flex: 1;
+  display: flex;
+  padding: 15px;
+  gap: 15px;
+  overflow: hidden;
+}
+
+/* ESQUERDA */
+
+.left-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
+}
+
+/* DIREITA */
+
+.right-panel {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* PAINEL INTERNO */
+
+.inner-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+}
+
+/* CARDS */
+
+.card {
+  background: #1b2735;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.side-card {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* LISTAS */
+
+ul {
+  padding-left: 20px;
+}
+
+.micro-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.micro-list div {
+  background: #243447;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* BOTÕES */
+
+button {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #0097a7;
+}
+
+/* =========================
+   ÍCONES GERAIS
+========================= */
+
+.ui-icon {
+
+  width: 22px;
+
+  height: 22px;
+
+  object-fit: contain;
+}
+
+/* =========================
+   ÍCONES DOS TÍTULOS
+========================= */
+
+.section-title,
+.game-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.section-icon,
+.title-icon {
+
+  width: 30px;
+
+  height: 30px;
+
+  object-fit: contain;
+}
+
+/* =========================
+   STATUS BAR
+========================= */
+
+.status-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  background: #1f2937;
+
+  padding: 8px 12px;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   BOTÃO DE DICA
+========================= */
+
+.hint-btn {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+/* FOOTER */
+.credits {
+
+  position: absolute;
+
+  bottom: 10px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 12px;
+
+  opacity: 0.7;
+
+  color: white;
+}
+
+.credits a {
+
+  color: #60a5fa;
+
+  text-decoration: none;
+}
+
+/* UTILIDADES */
+
+.hidden {
+  display: none;
+}
+
+.correct {
+  color: #4caf50;
+}
+
+.wrong {
+  color: #ff5252;
+}
+
+.checkbox-item {
+  margin: 8px 0;
+}
+
+.side-section {
+  margin-bottom: 20px;
+}
+
+/* POPUP */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.75);
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.popup-card {
+  width: 500px;
+  max-width: 90%;
+
+  background: #1b2735;
+
+  border: 2px solid #00bcd4;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  animation: popupShow 0.2s ease;
+}
+
+.popup-card h2 {
+  margin-top: 0;
+  color: #00e5ff;
+}
+
+.popup-card p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@keyframes popupShow {
+
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popup-card {
+  position: relative;
+  z-index: 1001;
+}
+
+.popup-overlay {
+  z-index: 1000;
+}
+
+.popup-overlay:not(.hidden) {
+  display: flex;
+}
+
+.hint-btn {
+
+  background: #ffc107;
+
+  color: black;
+
+  font-weight: bold;
+
+  padding: 8px 14px;
+
+  margin-top: 0;
+}
+
+.hint-btn:hover {
+
+  background: #ffca28;
+}

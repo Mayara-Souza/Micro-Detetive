@@ -1,0 +1,221 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Micro Detetive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- POPUP FEEDBACK -->
+    <div id="popup-overlay" class="popup-overlay hidden">
+
+    <div class="popup-card">
+
+        <h2 id="popup-title"></h2>
+
+        <p id="popup-message"></p>
+
+        <button onclick="closePopup()">
+        Continuar
+        </button>
+
+    </div>
+
+    </div>
+
+  <div class="app">
+
+    <!-- TOPO -->
+    <header class="topbar">
+      <h1 class="game-title">
+        <img
+            src="./icons/bacteria.png"
+            class="title-icon"
+        >
+        <span>Micro Detetive</span>
+
+    </h1>
+
+      <div class="status-bar">
+        <button class="hint-btn" onclick="showHintPopup()">
+            <img
+                src="./icons/loupe.png"
+                class="ui-icon"
+            >
+            <span>Dica</span>
+
+            </button>
+            <div class="status-item">
+            <img
+                src="./icons/money-bags.png"
+                class="ui-icon"
+            >
+            <span id="coins">3</span>
+
+            </div>
+            <div class="status-item">
+            <img
+                src="./icons/star.png"
+                class="ui-icon"
+            >
+
+            <span id="score">100</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-layout">
+
+      <!-- ESQUERDA -->
+      <section class="left-panel">
+
+        <!-- INTRO -->
+        <div class="card" id="intro-screen">
+
+         <h2 class="section-title">
+            <img
+                src="./icons/science.png"
+                class="section-icon"
+            >
+            Nova amostra recebida
+        </h2>
+
+          <p>
+            Descubra qual microrganismo está presente.
+          </p>
+
+          <button onclick="startGame()">
+            Iniciar investigação
+          </button>
+
+        </div>
+
+        <!-- JOGO -->
+        <div id="game-screen" class="hidden">
+
+          <!-- BLOCO INTERNO -->
+          <div class="inner-panel">
+
+            <div class="card">
+
+              <h2 class="section-title">
+                <img
+                    src="./icons/microscope.png"
+                    class="section-icon"
+                >
+                Escolha um teste
+                </h2>
+
+              <div id="test-buttons"></div>
+
+            </div>
+
+            <div class="card hidden" id="result-card">
+
+              <h2 class="section-title">
+                <img
+                    src="./icons/books.png"
+                    class="section-icon"
+                >
+                Resultado
+            </h2>
+
+              <p id="test-result"></p>
+
+              <h3>Quem você elimina?</h3>
+
+              <div id="elimination-options"></div>
+
+              <button
+                id="confirm-btn"
+                onclick="confirmElimination()"
+              >
+                Confirmar
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- FINAL -->
+        <div class="card hidden" id="final-screen">
+
+        <h2 class="section-title">
+            <img
+                src="./icons/target.png"
+                class="section-icon"
+            >
+            Diagnóstico Final
+        </h2>
+
+          <div id="final-options"></div>
+
+          <div id="final-feedback"></div>
+
+        </div>
+
+      </section>
+
+      <!-- DIREITA -->
+      <aside class="right-panel">
+
+        <div class="card side-card">
+
+          <h2 class="section-title">
+            <img
+                src="./icons/loupe.png"
+                class="section-icon"
+            >
+            Investigação
+         </h2>
+
+          <div class="side-section">
+
+            <h3 class="section-title">
+                <img
+                    src="./icons/check.png"
+                    class="section-icon"
+                >
+                Possíveis
+            </h3>
+
+            <ul id="possible-list"></ul>
+
+          </div>
+
+          <div class="side-section">
+
+            <h3 class="section-title">
+                <img
+                    src="./icons/remove.png"
+                    class="section-icon"
+                >
+                Eliminados
+            </h3>
+
+            <ul id="eliminated-list"></ul>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="credits">
+     Ícones por
+     <a href="https://www.flaticon.com/free-icons/infection" title="infection icons">Infection icons created by Freepik - Flaticon</a>
+
+    </footer>
+
+</body>
+</html>
