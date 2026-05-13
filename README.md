@@ -104,11 +104,7 @@ Sem frameworks externos.
 
 ## 📸 Screenshots
 
-Adicione aqui imagens do jogo:
-
-```markdown
 ![Gameplay](./screenshots/tela.png)
-```
 
 ---
 
