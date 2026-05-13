@@ -107,7 +107,7 @@ Sem frameworks externos.
 Adicione aqui imagens do jogo:
 
 ```markdown
-![Gameplay](./screenshots/gameplay.png)
+![Gameplay](./screenshots/tela.png)
 ```
 
 ---
