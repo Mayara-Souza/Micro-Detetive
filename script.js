@@ -14,13 +14,9 @@ const microorganisms = [
 // BACTERIA  
 {
   id: "saureus",
-
   name: "Staphylococcus aureus",
-
   type: "bacteria",
-
   hint: "Comumente associado a infecções cutâneas, abscessos e intoxicação alimentar.",
-
   traits: {
     gram: "positivo",
 
@@ -34,13 +30,9 @@ const microorganisms = [
 
 {
   id: "spyogenes",
-
   name: "Streptococcus pyogenes",
-
   type: "bacteria",
-
   hint: "Importante agente etiológico da faringite bacteriana e erisipela.",
-
   traits: {
     gram: "positivo",
 
@@ -54,13 +46,9 @@ const microorganisms = [
 
 {
   id: "ecoli",
-
   name: "Escherichia coli",
-
   type: "bacteria",
-
   hint: "Muito associado a infecções urinárias e microbiota intestinal.",
-
   traits: {
     gram: "negativo",
 
@@ -74,13 +62,9 @@ const microorganisms = [
 
 {
   id: "ngono",
-
   name: "Neisseria gonorrhoeae",
-
   type: "bacteria",
-
   hint: "Agente etiológico causador de uma IST.",
-
   traits: {
     gram: "negativo",
 
@@ -94,13 +78,9 @@ const microorganisms = [
 
 {
   id: "paeruginosa",
-
   name: "Pseudomonas aeruginosa",
-
   type: "bacteria",
-
   hint: "Frequentemente associada a infecções hospitalares e pacientes queimados.",
-
   traits: {
     gram: "negativo",
 
@@ -115,13 +95,9 @@ const microorganisms = [
 // FUNGOS 
 {
   id: "albicans",
-
   name: "Candida albicans",
-
   type: "fungus",
-
   hint: "Fungo oportunista frequentemente associado à candidíase.",
-
   traits: {
     gram: "positivo",
     morphology: "levedura",
@@ -133,13 +109,9 @@ const microorganisms = [
 
 {
   id: "neoformans",
-
   name: "Cryptococcus neoformans",
-
   type: "fungus",
-
   hint: "Fungo encapsulado associado à meningite em imunossuprimidos.",
-
   traits: {
     gram: "positivo",
     morphology: "levedura",
@@ -151,13 +123,9 @@ const microorganisms = [
 
 {
   id: "aspergillus",
-
   name: "Aspergillus fumigatus",
-
   type: "fungus",
-
   hint: "Importante fungo filamentoso associado à aspergilose pulmonar.",
-
   traits: {
     gram: "variável",
     morphology: "filamentoso",
@@ -169,13 +137,9 @@ const microorganisms = [
 
 {
   id: "trichophyton",
-
   name: "Trichophyton rubrum",
-
   type: "fungus",
-
   hint: "Dermatófito frequentemente associado a micoses cutâneas.",
-
   traits: {
     gram: "variável",
     morphology: "filamentoso",
@@ -184,7 +148,6 @@ const microorganisms = [
     urease: "positivo"
   }
 }
-
 
 ];
 
@@ -625,18 +588,23 @@ function evaluateTestStrategy(testKey) {
 
 
 function chooseTest(testKey) {
-    
-    punishWrongCategory(testKey);
-    evaluateTestStrategy(testKey);
-    currentTest = testKey;
+
+  punishWrongCategory(testKey);
+  evaluateTestStrategy(testKey);
+  currentTest = testKey;
 
   usedTests.push(testKey);
 
-  const property =
-    tests[testKey].property;
+  const property = tests[testKey].property;
 
-  const result =
-    currentCase.traits[property];
+  // FIX: currentCase pode não ter essa trait (ex: fungo sem coagulase)
+  const rawResult  = currentCase.traits[property];
+  const result     = rawResult !== undefined ? rawResult : "não se aplica";
+
+  // Trava os botões de teste enquanto o resultado está aberto
+  document
+    .getElementById("test-buttons")
+    .classList.add("locked");
 
   document
     .getElementById("result-card")
@@ -644,14 +612,11 @@ function chooseTest(testKey) {
 
   document
     .getElementById("test-result")
-    .innerText =
-      tests[testKey]
-        .resultText(result);
+    .innerText = tests[testKey].resultText(result);
 
-  renderEliminationOptions(
-    property,
-    result
-  );
+  renderEliminationOptions(property, result);
+
+  renderUsedTests();
 }
 
 // ==========================================
@@ -777,6 +742,9 @@ function confirmElimination() {
 
     score += 10;
 
+    // Fecha o resultado e destrava os testes
+    closeResultCard();
+
     showPopup(
       "✅ Correto!",
       "Excelente interpretação laboratorial."
@@ -800,6 +768,9 @@ function confirmElimination() {
     }
 
   });
+
+  // Fecha o resultado e destrava os testes
+  closeResultCard();
 
   showPopup(
     "⚠️ Está no caminho certo!",
@@ -883,6 +854,10 @@ function finishGame(answer) {
         Pontuação final:
         ${score}
       </p>
+
+      <button onclick="location.reload()" style="margin-top:16px">
+        🔄 Jogar novamente
+      </button>
     `;
 
   } else {
@@ -993,14 +968,45 @@ function gameOver() {
 
   showPopup(
     "💀 Você foi demitido",
-    "As moedas acabaram."
+    "As moedas acabaram. O microrganismo era: " + currentCase.name + "."
   );
 
+  // Fecha o popup automaticamente e recarrega
   setTimeout(() => {
-
+    closePopup();
     location.reload();
+  }, 3500);
+}
 
-  }, 2500);
+// ==========================================
+// FECHAR RESULTADO & HISTÓRICO DE TESTES
+// ==========================================
+
+function closeResultCard() {
+  document
+    .getElementById("result-card")
+    .classList.add("hidden");
+
+  document
+    .getElementById("test-buttons")
+    .classList.remove("locked");
+}
+
+function renderUsedTests() {
+  let container = document.getElementById("used-tests-history");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (usedTests.length === 0) return;
+
+  usedTests.forEach(testKey => {
+    const tag = document.createElement("span");
+    tag.className = "used-test-tag";
+    tag.textContent = "✓ " + tests[testKey].label;
+    container.appendChild(tag);
+  });
 }
 
 // ==========================================

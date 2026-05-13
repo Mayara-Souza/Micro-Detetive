@@ -23,13 +23,31 @@ body {
 /* TOPO */
 
 .topbar {
+
   height: 80px;
-  background: #16212e;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(22,33,46,0.92),
+      rgba(15,23,42,0.96)
+    );
+
+  backdrop-filter: blur(12px);
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  padding: 0 25px;
-  border-bottom: 2px solid #00bcd4;
+
+  padding: 0 28px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35);
 }
 
 .topbar h1 {
@@ -62,41 +80,65 @@ body {
 /* =========================
    BOTÕES DOS TESTES
 ========================= */
-
 #test-buttons button {
 
-  background: #1f2937;
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1f2937,
+      #111827
+    );
 
   color: white;
 
-  border: 2px solid #374151;
+  border:
+    1px solid rgba(255,255,255,0.08);
 
-  border-radius: 14px;
+  border-radius: 18px;
 
-  padding: 18px 14px;
+  padding: 18px 16px;
 
   font-size: 16px;
 
-  font-weight: 600;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.2s ease;
+  transition: all 0.25s ease;
 
-  min-height: 80px;
+  min-height: 88px;
 
   width: 100%;
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.28);
 }
 
 /* HOVER */
 
 #test-buttons button:hover {
 
-  transform: translateY(-2px);
+  transform:
+    translateY(-4px)
+    scale(1.02);
 
-  background: #2563eb;
+  border-color:
+    rgba(0,229,255,0.45);
 
-  border-color: #60a5fa;
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35),
+    0 0 18px rgba(0,229,255,0.22);
+
+  background:
+    linear-gradient(
+      145deg,
+      #243447,
+      #16212e
+    );
 }
 
 /* CLIQUE */
@@ -167,10 +209,39 @@ body {
 /* CARDS */
 
 .card {
-  background: #1b2735;
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(27,39,53,0.92),
+      rgba(17,24,39,0.96)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  border-radius: 20px;
+
+  padding: 22px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.42),
+    0 0 18px rgba(0,229,255,0.08);
 }
 
 .side-card {
@@ -182,6 +253,41 @@ body {
 
 ul {
   padding-left: 20px;
+}
+
+.ui-icon,
+.section-icon,
+.title-icon {
+
+  filter:
+    drop-shadow(
+      0 0 6px rgba(0,229,255,0.25)
+    );
+}
+
+ul li {
+
+  background:
+    rgba(255,255,255,0.03);
+
+  border:
+    1px solid rgba(255,255,255,0.04);
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  margin-bottom: 8px;
+
+  transition: 0.2s ease;
+}
+
+ul li:hover {
+
+  transform: translateX(4px);
+
+  background:
+    rgba(0,229,255,0.06);
 }
 
 .micro-list {
@@ -200,18 +306,49 @@ ul {
 /* BOTÕES */
 
 button {
-  background: #00bcd4;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00bcd4,
+      #0097a7
+    );
+
   color: white;
+
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+
+  padding: 13px 18px;
+
+  border-radius: 14px;
+
   cursor: pointer;
+
   margin-top: 10px;
-  transition: 0.2s;
+
+  transition: all 0.22s ease;
+
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+
+  box-shadow:
+    0 6px 18px rgba(0,188,212,0.25);
 }
 
 button:hover {
-  background: #0097a7;
+
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #00e5ff,
+      #00acc1
+    );
+
+  box-shadow:
+    0 10px 22px rgba(0,229,255,0.35);
 }
 
 /* =========================
@@ -261,13 +398,20 @@ button:hover {
 
   align-items: center;
 
-  gap: 6px;
+  gap: 8px;
 
-  background: #1f2937;
+  background:
+    rgba(255,255,255,0.05);
 
-  padding: 8px 12px;
+  padding: 10px 14px;
 
-  border-radius: 10px;
+  border-radius: 14px;
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 /* =========================
@@ -308,6 +452,42 @@ button:hover {
   text-decoration: none;
 }
 
+/* =========================
+   TRAVA DE TESTES (resultado aberto)
+========================= */
+
+#test-buttons.locked button {
+  pointer-events: none;
+  opacity: 0.35;
+  filter: grayscale(0.6);
+  cursor: not-allowed;
+}
+
+/* =========================
+   HISTÓRICO DE TESTES USADOS
+========================= */
+
+.used-tests-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  min-height: 0;
+}
+
+.used-test-tag {
+  display: inline-flex;
+  align-items: center;
+  background: #0f3a2a;
+  color: #4ade80;
+  border: 1px solid #166534;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 /* UTILIDADES */
 
 .hidden {
@@ -345,18 +525,30 @@ button:hover {
 }
 
 .popup-card {
+
   width: 500px;
+
   max-width: 90%;
 
-  background: #1b2735;
+  background:
+    linear-gradient(
+      145deg,
+      #1b2735,
+      #0f172a
+    );
 
-  border: 2px solid #00bcd4;
+  border:
+    1px solid rgba(0,229,255,0.25);
 
-  border-radius: 18px;
+  border-radius: 24px;
 
-  padding: 30px;
+  padding: 34px;
 
   text-align: center;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.55),
+    0 0 20px rgba(0,229,255,0.12);
 
   animation: popupShow 0.2s ease;
 }
@@ -413,4 +605,29 @@ button:hover {
 .hint-btn:hover {
 
   background: #ffca28;
+}
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0,229,255,0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(0,188,212,0.08),
+      transparent 30%
+    );
+
+  pointer-events: none;
+
+  z-index: -1;
 }
