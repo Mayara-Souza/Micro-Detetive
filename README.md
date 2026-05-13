@@ -104,7 +104,7 @@ Sem frameworks externos.
 
 ## 📸 Screenshots
 
-![Gameplay](./screenshots/tela.png)
+![Gameplay](https://github.com/Mayara-Souza/Micro-Detetive/blob/main/screenshots/tela02.PNG)
 
 ---
 
